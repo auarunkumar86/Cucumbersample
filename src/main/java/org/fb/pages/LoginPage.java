@@ -21,10 +21,6 @@ public class LoginPage extends Base {
 	@FindBy(xpath = "//i[@class='fb_logo img sp_sh983SE11WH sx_84be92']")
 	private WebElement imgFbLogo;
 
-	public void setDriver(WebDriver driver) {
-		this.driver = driver;
-	}
-
 	public WebElement getImgFbLogo() {
 		return imgFbLogo;
 	}
