@@ -49,6 +49,18 @@ public class Base {
 		return flag;
 	}
 
+	public boolean alertIsPresent(WebDriver driver, int time) {
+		boolean flag = false;
+		try {
+			wait = new WebDriverWait(driver, time);
+			wait.until(ExpectedConditions.alertIsPresent());
+			flag = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return flag;
+	}
+
 	public boolean elementToBeClickable(WebDriver driver, int time,
 			WebElement element) {
 		boolean flag = false;
@@ -109,4 +121,5 @@ public class Base {
 			element.click();
 		}
 	}
+
 }
