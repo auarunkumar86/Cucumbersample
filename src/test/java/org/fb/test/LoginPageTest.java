@@ -16,7 +16,7 @@ public class LoginPageTest {
 
 	@BeforeClass
 	public static void launchBrowser() {
-		driver = Base.getDriver("chrome");
+		driver = Base.getDriver("firefox");
 
 	}
 
