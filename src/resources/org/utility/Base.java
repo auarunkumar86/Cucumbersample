@@ -1,5 +1,6 @@
 package org.utility;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -15,19 +16,20 @@ public class Base {
 	WebDriverWait wait;
 
 	public static WebDriver getDriver(String browser) {
+		File f = new File("./driver");
 		if (browser.equals("chrome")) {
-			System.setProperty("webdriver.chrome.driver",
-					"F:/Green Tech/BatchNew/GmailAutomation/driver/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", f.getAbsolutePath()
+					+ "/chromedriver.exe");
 			driver = new ChromeDriver();
 
 		} else if (browser.equals("firefox")) {
-			System.setProperty("webdriver.geckodriver.driver",
-					"F:/Green Tech/BatchNew/GmailAutomation/driver/geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver", f.getAbsolutePath()
+					+ "/geckodriver.exe");
 			driver = new FirefoxDriver();
 
 		} else if (browser.equals("ie")) {
-			System.setProperty("webdriver.ie.driver",
-					"F:/Green Tech/BatchNew/GmailAutomation/driver/IEDriverServer.exe");
+			System.setProperty("webdriver.ie.driver", f.getAbsolutePath()
+					+ "/IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 
 		}
