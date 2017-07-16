@@ -25,7 +25,8 @@ public class LoginPageTest {
 
 		loginPage = new LoginPage(driver);
 		homePage = new HomePage(driver);
-		Assert.assertTrue(base.elementFound(loginPage.getImgFbLogo()));
+		Assert.assertTrue(base.elementFound(driver, 10,
+				loginPage.getImgFbLogo()));
 
 		base.setText(loginPage.getTxtUserName(), "ramesh@gmail.com");
 

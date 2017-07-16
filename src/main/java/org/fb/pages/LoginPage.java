@@ -18,7 +18,7 @@ public class LoginPage extends Base {
 	@FindBy(xpath = "//*[text()='Log In']")
 	private WebElement btnLogin;
 
-	@FindBy(xpath = "//i[@class='fb_logo img sp_sh983SE11WH sx_84be92']")
+	@FindBy(xpath = "//a[@title='Go to Facebook home']")
 	private WebElement imgFbLogo;
 
 	public WebElement getImgFbLogo() {
