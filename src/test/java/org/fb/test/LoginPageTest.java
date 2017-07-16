@@ -16,7 +16,7 @@ public class LoginPageTest {
 
 	@BeforeClass
 	public static void launchBrowser() {
-		driver = Base.getDriver("firefox");
+		driver = Base.getDriver();
 
 	}
 
@@ -37,8 +37,6 @@ public class LoginPageTest {
 		base.setText(loginPage.getTxtPassword(), "12345");
 		Assert.assertEquals("12345", base.getText(loginPage.getTxtPassword()));
 		base.clickBtn(loginPage.getBtnLogin());
-		Assert.assertTrue(base.elementFound(driver, 10,
-				homePage.getImgHomePageLogo()));
 
 	}
 

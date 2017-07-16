@@ -1,6 +1,7 @@
 package org.utility;
 
 import java.io.File;
+import java.io.FileReader;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -10,12 +11,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 public class Base {
 	static WebDriver driver;
 	WebDriverWait wait;
+	static File f1 = new File("./JSON/Configuration.json");
 
-	public static WebDriver getDriver(String browser) {
+	public static WebDriver getDriver() {
+		JSONObject jsonObject = JSONReadFromFile();
+		String browser = (String) jsonObject.get("browser");
+
 		File f = new File("./driver");
 		if (browser.equals("chrome")) {
 			System.setProperty("webdriver.chrome.driver", f.getAbsolutePath()
@@ -33,8 +40,9 @@ public class Base {
 			driver = new InternetExplorerDriver();
 
 		}
+
 		driver.manage().window().maximize();
-		driver.get("https://www.facebook.com/");
+		driver.get((String) jsonObject.get("url"));
 		return driver;
 	}
 
@@ -124,4 +132,18 @@ public class Base {
 		}
 	}
 
+	public static JSONObject JSONReadFromFile() {
+		JSONParser parser = new JSONParser();
+		JSONObject jsonObject = null;
+		try {
+
+			Object obj = parser.parse(new FileReader(f1.getAbsoluteFile()));
+
+			jsonObject = (JSONObject) obj;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return jsonObject;
+	}
 }
