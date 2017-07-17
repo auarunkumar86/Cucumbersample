@@ -1,4 +1,4 @@
-package org.fb.test;
+package org.fb.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

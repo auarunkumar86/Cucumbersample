@@ -1,5 +1,6 @@
 package org.fb.test;
 
+import org.fb.pages.HomePage;
 import org.fb.pages.LoginPage;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -27,16 +28,19 @@ public class LoginPageTest {
 		homePage = new HomePage(driver);
 		Assert.assertTrue(base.elementFound(driver, 10,
 				loginPage.getImgFbLogo()));
+		base.getScreenShot("facebookPage");
 
 		base.setText(loginPage.getTxtUserName(), "ramesh@gmail.com");
-
+		base.getScreenShot("username");
 		Assert.assertEquals("ramesh@gmail.com",
 				base.getText(loginPage.getTxtUserName()));
-
+		base.getScreenShot("password");
 		loginPage.setTxtPassword("12345");
 		base.setText(loginPage.getTxtPassword(), "12345");
+		base.getScreenShot("login");
 		Assert.assertEquals("12345", base.getText(loginPage.getTxtPassword()));
 		base.clickBtn(loginPage.getBtnLogin());
+		base.getScreenShot("after login");
 
 	}
 

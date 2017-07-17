@@ -2,8 +2,11 @@ package org.utility;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,6 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -145,5 +149,18 @@ public class Base {
 			e.printStackTrace();
 		}
 		return jsonObject;
+	}
+
+	public void getScreenShot(String screenShotFileName) {
+		File screenShotLocation = new File("./screenshot/" + screenShotFileName
+				+ ".png");
+		TakesScreenshot screenshot = (TakesScreenshot) driver;
+		File file = screenshot.getScreenshotAs(OutputType.FILE);
+		try {
+			FileUtils.copyFile(file, screenShotLocation);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
